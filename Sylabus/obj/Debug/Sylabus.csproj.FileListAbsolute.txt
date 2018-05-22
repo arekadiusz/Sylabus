@@ -97,5 +97,4 @@ C:\Users\Piotr\Desktop\PROJEKT WMI\sylabusWMI\Sylabus\obj\Debug\Sylabus.csproj.C
 C:\Users\Piotr\Desktop\PROJEKT WMI\sylabusWMI\Sylabus\obj\Debug\Sylabus.csproj.CopyComplete
 C:\Users\Piotr\Desktop\PROJEKT WMI\sylabusWMI\Sylabus\obj\Debug\Sylabus.dll
 C:\Users\Piotr\Desktop\PROJEKT WMI\sylabusWMI\Sylabus\obj\Debug\Sylabus.pdb
-C:\Users\Piotr\Desktop\PROJEKT WMI\sylabusWMI\Sylabus\bin\Sylabus.dll.CodeAnalysisLog.xml
-C:\Users\Piotr\Desktop\PROJEKT WMI\sylabusWMI\Sylabus\bin\Sylabus.dll.lastcodeanalysissucceeded
+C:\Users\Piotr\Desktop\PROJEKT WMI\sylabusWMI\Sylabus\obj\Debug\Sylabus.csprojAssemblyReference.cache
