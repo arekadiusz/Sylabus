@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sylabus", "Sylabus\Sylabus.csproj", "{9F3392DC-FB16-4B3C-BD52-F59680459CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "..\WebApi\WebApi.csproj", "{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F3392DC-FB16-4B3C-BD52-F59680459CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3392DC-FB16-4B3C-BD52-F59680459CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3392DC-FB16-4B3C-BD52-F59680459CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3392DC-FB16-4B3C-BD52-F59680459CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B62555C4-E253-44AE-9FCE-6310CCA3D937}
+	EndGlobalSection
+EndGlobal
