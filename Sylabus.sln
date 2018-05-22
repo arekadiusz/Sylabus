@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sylabus", "Sylabus\Sylabus.csproj", "{9F3392DC-FB16-4B3C-BD52-F59680459CCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "..\WebApi\WebApi.csproj", "{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{EA8B7E94-3199-4DFF-A24D-3ECC5FCC5EFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{9F3392DC-FB16-4B3C-BD52-F59680459CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F3392DC-FB16-4B3C-BD52-F59680459CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F3392DC-FB16-4B3C-BD52-F59680459CCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE9EC6D8-A52A-4CDF-B92F-6ADF0EEC3061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA8B7E94-3199-4DFF-A24D-3ECC5FCC5EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8B7E94-3199-4DFF-A24D-3ECC5FCC5EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8B7E94-3199-4DFF-A24D-3ECC5FCC5EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8B7E94-3199-4DFF-A24D-3ECC5FCC5EFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
