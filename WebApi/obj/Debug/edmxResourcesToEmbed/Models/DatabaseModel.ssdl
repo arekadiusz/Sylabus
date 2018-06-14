@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sylabusWMIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Elementy_siatki">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Sylabus" Type="varchar" MaxLength="30" />
+    <Property Name="Siatka" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Elementy_template">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nazwa_elementu" Type="varchar" MaxLength="100" />
+    <Property Name="Tempalate" Type="varchar" MaxLength="50" />
+    <Property Name="Sylabus" Type="varchar" MaxLength="30" />
+    <Property Name="Obowiazkowy" Type="bit" />
+    <Property Name="Kolejność" Type="int" />
+    <Property Name="Typ_tabeli" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Program_studiow">
+    <Key>
+      <PropertyRef Name="Kod_przedmiotu" />
+    </Key>
+    <Property Name="Id_programu" Type="int" Nullable="false" />
+    <Property Name="Kod_przedmiotu" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Wydzial" Type="int" />
+    <Property Name="Tryb_studiow" Type="varchar" MaxLength="50" />
+    <Property Name="Stopien_studiow" Type="varchar" MaxLength="20" />
+    <Property Name="Nazwa_PL" Type="varchar" MaxLength="50" />
+    <Property Name="Nazwa_ENG" Type="varchar" MaxLength="50" />
+    <Property Name="Tutul_zawodowy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Nazwa_Roli" />
+    </Key>
+    <Property Name="Id_roli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa_Roli" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Opis_roli" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Siatka_godzin">
+    <Key>
+      <PropertyRef Name="Id_siatki" />
+    </Key>
+    <Property Name="Id_siatki" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Program_studiow" Type="varchar" MaxLength="50" />
+    <Property Name="Rok_rekrutacji" Type="int" />
+    <Property Name="Semestr" Type="int" />
+    <Property Name="Wydział" Type="int" />
+  </EntityType>
+  <EntityType Name="Sylabus">
+    <Key>
+      <PropertyRef Name="Kod_przedmiotu" />
+    </Key>
+    <Property Name="Id_sylabusa" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Kod_przedmiotu" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Template" Type="varchar" MaxLength="50" />
+    <Property Name="Siatka" Type="varchar" MaxLength="50" />
+    <Property Name="Wykladowca" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Template">
+    <Key>
+      <PropertyRef Name="Kod_template" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Kod_template" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rok" Type="int" Nullable="false" />
+    <Property Name="Nazwa" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Uzytkownicy">
+    <Key>
+      <PropertyRef Name="E-mail" />
+    </Key>
+    <Property Name="Id" Type="int" />
+    <Property Name="E-mail" Type="int" Nullable="false" />
+    <Property Name="Rola" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Wydzial" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Wartosc_Elementu">
+    <Key>
+      <PropertyRef Name="Id_wartosci" />
+    </Key>
+    <Property Name="Id_wartosci" Type="int" Nullable="false" />
+    <Property Name="Vartość" Type="varchar" MaxLength="1000" />
+    <Property Name="Element_template" Type="int" />
+    <Property Name="Sylabus" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Wydzial">
+    <Key>
+      <PropertyRef Name="Id_jednostki" />
+    </Key>
+    <Property Name="Id_jednostki" Type="int" Nullable="false" />
+    <Property Name="Nazwa_PL" Type="varchar" MaxLength="50" />
+    <Property Name="Nazwa_ENG" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Elementy_siatki_Siatka_godzin">
+    <End Role="Siatka_godzin" Type="Self.Siatka_godzin" Multiplicity="0..1" />
+    <End Role="Elementy_siatki" Type="Self.Elementy_siatki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siatka_godzin">
+        <PropertyRef Name="Id_siatki" />
+      </Principal>
+      <Dependent Role="Elementy_siatki">
+        <PropertyRef Name="Siatka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elementy_siatki_Sylabus">
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="0..1" />
+    <End Role="Elementy_siatki" Type="Self.Elementy_siatki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sylabus">
+        <PropertyRef Name="Kod_przedmiotu" />
+      </Principal>
+      <Dependent Role="Elementy_siatki">
+        <PropertyRef Name="Sylabus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elementy_template_Sylabus">
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="0..1" />
+    <End Role="Elementy_template" Type="Self.Elementy_template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sylabus">
+        <PropertyRef Name="Kod_przedmiotu" />
+      </Principal>
+      <Dependent Role="Elementy_template">
+        <PropertyRef Name="Sylabus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elementy_template_Template">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Elementy_template" Type="Self.Elementy_template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="Kod_template" />
+      </Principal>
+      <Dependent Role="Elementy_template">
+        <PropertyRef Name="Tempalate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Program_studiow_Wydzial">
+    <End Role="Wydzial" Type="Self.Wydzial" Multiplicity="0..1" />
+    <End Role="Program_studiow" Type="Self.Program_studiow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wydzial">
+        <PropertyRef Name="Id_jednostki" />
+      </Principal>
+      <Dependent Role="Program_studiow">
+        <PropertyRef Name="Wydzial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siatka_godzin_Program_studiow1">
+    <End Role="Program_studiow" Type="Self.Program_studiow" Multiplicity="0..1" />
+    <End Role="Siatka_godzin" Type="Self.Siatka_godzin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program_studiow">
+        <PropertyRef Name="Kod_przedmiotu" />
+      </Principal>
+      <Dependent Role="Siatka_godzin">
+        <PropertyRef Name="Program_studiow" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siatka_godzin_Wydzial">
+    <End Role="Wydzial" Type="Self.Wydzial" Multiplicity="0..1" />
+    <End Role="Siatka_godzin" Type="Self.Siatka_godzin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wydzial">
+        <PropertyRef Name="Id_jednostki" />
+      </Principal>
+      <Dependent Role="Siatka_godzin">
+        <PropertyRef Name="Wydział" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sylabus_Siatka_godzin">
+    <End Role="Siatka_godzin" Type="Self.Siatka_godzin" Multiplicity="0..1" />
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siatka_godzin">
+        <PropertyRef Name="Id_siatki" />
+      </Principal>
+      <Dependent Role="Sylabus">
+        <PropertyRef Name="Siatka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sylabus_Template">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="Kod_template" />
+      </Principal>
+      <Dependent Role="Sylabus">
+        <PropertyRef Name="Template" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sylabus_Uzytkownicy">
+    <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="0..1" />
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uzytkownicy">
+        <PropertyRef Name="E-mail" />
+      </Principal>
+      <Dependent Role="Sylabus">
+        <PropertyRef Name="Wykladowca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uzytkownicy_Role1">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Nazwa_Roli" />
+      </Principal>
+      <Dependent Role="Uzytkownicy">
+        <PropertyRef Name="Rola" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uzytkownicy_Wydzial">
+    <End Role="Wydzial" Type="Self.Wydzial" Multiplicity="1" />
+    <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Wydzial">
+        <PropertyRef Name="Id_jednostki" />
+      </Principal>
+      <Dependent Role="Uzytkownicy">
+        <PropertyRef Name="E-mail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wartosc_Elementu_Elementy_template">
+    <End Role="Elementy_template" Type="Self.Elementy_template" Multiplicity="0..1" />
+    <End Role="Wartosc_Elementu" Type="Self.Wartosc_Elementu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Elementy_template">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wartosc_Elementu">
+        <PropertyRef Name="Element_template" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wartosc_Elementu_Sylabus">
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="0..1" />
+    <End Role="Wartosc_Elementu" Type="Self.Wartosc_Elementu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sylabus">
+        <PropertyRef Name="Kod_przedmiotu" />
+      </Principal>
+      <Dependent Role="Wartosc_Elementu">
+        <PropertyRef Name="Sylabus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sylabusWMIModelStoreContainer">
+    <EntitySet Name="Elementy_siatki" EntityType="Self.Elementy_siatki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Elementy_template" EntityType="Self.Elementy_template" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Program_studiow" EntityType="Self.Program_studiow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Siatka_godzin" EntityType="Self.Siatka_godzin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sylabus" EntityType="Self.Sylabus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Template" EntityType="Self.Template" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wartosc_Elementu" EntityType="Self.Wartosc_Elementu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wydzial" EntityType="Self.Wydzial" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Elementy_siatki_Siatka_godzin" Association="Self.FK_Elementy_siatki_Siatka_godzin">
+      <End Role="Siatka_godzin" EntitySet="Siatka_godzin" />
+      <End Role="Elementy_siatki" EntitySet="Elementy_siatki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elementy_siatki_Sylabus" Association="Self.FK_Elementy_siatki_Sylabus">
+      <End Role="Sylabus" EntitySet="Sylabus" />
+      <End Role="Elementy_siatki" EntitySet="Elementy_siatki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elementy_template_Sylabus" Association="Self.FK_Elementy_template_Sylabus">
+      <End Role="Sylabus" EntitySet="Sylabus" />
+      <End Role="Elementy_template" EntitySet="Elementy_template" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elementy_template_Template" Association="Self.FK_Elementy_template_Template">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Elementy_template" EntitySet="Elementy_template" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Program_studiow_Wydzial" Association="Self.FK_Program_studiow_Wydzial">
+      <End Role="Wydzial" EntitySet="Wydzial" />
+      <End Role="Program_studiow" EntitySet="Program_studiow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siatka_godzin_Program_studiow1" Association="Self.FK_Siatka_godzin_Program_studiow1">
+      <End Role="Program_studiow" EntitySet="Program_studiow" />
+      <End Role="Siatka_godzin" EntitySet="Siatka_godzin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siatka_godzin_Wydzial" Association="Self.FK_Siatka_godzin_Wydzial">
+      <End Role="Wydzial" EntitySet="Wydzial" />
+      <End Role="Siatka_godzin" EntitySet="Siatka_godzin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sylabus_Siatka_godzin" Association="Self.FK_Sylabus_Siatka_godzin">
+      <End Role="Siatka_godzin" EntitySet="Siatka_godzin" />
+      <End Role="Sylabus" EntitySet="Sylabus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sylabus_Template" Association="Self.FK_Sylabus_Template">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Sylabus" EntitySet="Sylabus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sylabus_Uzytkownicy" Association="Self.FK_Sylabus_Uzytkownicy">
+      <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+      <End Role="Sylabus" EntitySet="Sylabus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uzytkownicy_Role1" Association="Self.FK_Uzytkownicy_Role1">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uzytkownicy_Wydzial" Association="Self.FK_Uzytkownicy_Wydzial">
+      <End Role="Wydzial" EntitySet="Wydzial" />
+      <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wartosc_Elementu_Elementy_template" Association="Self.FK_Wartosc_Elementu_Elementy_template">
+      <End Role="Elementy_template" EntitySet="Elementy_template" />
+      <End Role="Wartosc_Elementu" EntitySet="Wartosc_Elementu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wartosc_Elementu_Sylabus" Association="Self.FK_Wartosc_Elementu_Sylabus">
+      <End Role="Sylabus" EntitySet="Sylabus" />
+      <End Role="Wartosc_Elementu" EntitySet="Wartosc_Elementu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
