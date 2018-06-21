@@ -13,20 +13,16 @@ namespace Sylabus.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Siatkigodzin()
         {
-            ViewBag.Message = "Miejsce na siatki godzin";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult Wykladowca()
         {
             return View();
         }
