@@ -22,9 +22,11 @@ namespace Sylabus.Controllers
         {
             return View();
         }
-        public ActionResult Wykladowca()
+        public ActionResult Admin()
         {
             return View();
+
         }
+
     }
 }
