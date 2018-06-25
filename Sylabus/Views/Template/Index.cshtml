@@ -5,10 +5,10 @@
 
 <div class="container" style="padding-left:0">
     <ul class="nav navbar-nav">
-        <li><a href="/Home/Index">Home</a></li>
-        <li><a href="/Home/Admin">Panel Administracyjny</a></li>
-        <li><a href="/Wykladowca/Index">Panel Wykladowcy</a></li>
-        <li><a href="/Template/Index">Panel Template</a></li>
+        <li>@Html.ActionLink("Home", "Index")</li>
+        <li>@Html.ActionLink("Panel administracyjny", "Admin", "Home")</li>
+        <li>@Html.ActionLink("Panel wykładowcy", "Index", "Instructor")</li>
+        <li>@Html.ActionLink("Panel template", "Index", "Template")</li>
     </ul>
 </div>
 <h2>Panel obsługi Template</h2>

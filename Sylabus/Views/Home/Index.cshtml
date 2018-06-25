@@ -4,9 +4,9 @@
 <div class="container" style="padding-left:0">
     <div class="container" style="padding-left:0">
         <ul class="nav navbar-nav">
-            <li><a href="/Home/Index">Home</a></li>
-            <li><a href="/Home/Siatkigodzin">Siatki godzin</a></li>
-            <li><a href="/Home/Admin">Panel Administracyjny</a></li>
+            <li>@Html.ActionLink("Home", "Index")</li>
+            <li>@Html.ActionLink("Siatki godzin", "Siatkigodzin", "Home")</li>
+            <li>@Html.ActionLink("Panel administracyjny", "Admin", "Home")</li>
         </ul>
     </div>
     <form class="form-inline">

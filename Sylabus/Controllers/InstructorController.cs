@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Sylabus.Controllers
 {
-    public class WykladowcaController : Controller
+    public class InstructorController : Controller
     {
-        // GET: Wykladowca
+        // GET: Instructor
         public ActionResult Index()
         {
             return View();
