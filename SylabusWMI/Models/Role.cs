@@ -23,7 +23,8 @@ namespace SylabusWMI.Models
         public int Id_roli { get; set; }
         public string Nazwa_Roli { get; set; }
         public string Opis_roli { get; set; }
-    
+
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Uzytkownicy> Uzytkownicies { get; set; }
     }
