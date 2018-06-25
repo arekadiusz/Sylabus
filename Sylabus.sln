@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sylabus", "Sylabus\Sylabus.csproj", "{91E02A04-AF6D-4889-BBF7-C42A682BBB16}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{6434059D-CE99-48C6-8769-D849A9397DB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sylabus", "SylabusWMI\Sylabus.csproj", "{C42E498C-C651-48BF-97F9-D3DC8782209D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{91E02A04-AF6D-4889-BBF7-C42A682BBB16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91E02A04-AF6D-4889-BBF7-C42A682BBB16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91E02A04-AF6D-4889-BBF7-C42A682BBB16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91E02A04-AF6D-4889-BBF7-C42A682BBB16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6434059D-CE99-48C6-8769-D849A9397DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6434059D-CE99-48C6-8769-D849A9397DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6434059D-CE99-48C6-8769-D849A9397DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6434059D-CE99-48C6-8769-D849A9397DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42E498C-C651-48BF-97F9-D3DC8782209D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42E498C-C651-48BF-97F9-D3DC8782209D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42E498C-C651-48BF-97F9-D3DC8782209D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42E498C-C651-48BF-97F9-D3DC8782209D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {77D7CF7A-7E8E-4333-B156-1A4244300526}
+		SolutionGuid = {7C0D20C3-1075-47F1-AA31-78F3F287EB65}
 	EndGlobalSection
 EndGlobal
