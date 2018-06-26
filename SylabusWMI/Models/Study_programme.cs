@@ -12,25 +12,23 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Program_studiow
+    public partial class Study_programme
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Program_studiow()
+        public Study_programme()
         {
-            this.Siatka_godzin = new HashSet<Siatka_godzin>();
+            this.Ours_grid = new HashSet<Ours_grid>();
         }
     
-        public int Id_programu { get; set; }
-        public string Kod_przedmiotu { get; set; }
-        public Nullable<int> Wydzial { get; set; }
-        public string Tryb_studiow { get; set; }
-        public string Stopien_studiow { get; set; }
-        public string Nazwa_PL { get; set; }
-        public string Nazwa_ENG { get; set; }
-        public string Tutul_zawodowy { get; set; }
+        public int Id_study_program { get; set; }
+        public Nullable<int> Faculty { get; set; }
+        public string Study_mode { get; set; }
+        public string Study_degree { get; set; }
+        public string Name_PL { get; set; }
+        public string Name_ENG { get; set; }
     
-        public virtual Wydzial Wydzial1 { get; set; }
+        public virtual Faculty Faculty1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Siatka_godzin> Siatka_godzin { get; set; }
+        public virtual ICollection<Ours_grid> Ours_grid { get; set; }
     }
 }

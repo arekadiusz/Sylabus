@@ -12,23 +12,20 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Wydzial
+    public partial class Template_elements
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Wydzial()
+        public Template_elements()
         {
-            this.Program_studiow = new HashSet<Program_studiow>();
-            this.Siatka_godzin = new HashSet<Siatka_godzin>();
+            this.Elements_in_template = new HashSet<Elements_in_template>();
         }
     
-        public int Id_jednostki { get; set; }
-        public string Nazwa_PL { get; set; }
-        public string Nazwa_ENG { get; set; }
+        public int Id { get; set; }
+        public string Elements_name { get; set; }
+        public string Tempalate { get; set; }
+        public Nullable<bool> Obligatory { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Program_studiow> Program_studiow { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Siatka_godzin> Siatka_godzin { get; set; }
-        public virtual Uzytkownicy Uzytkownicy { get; set; }
+        public virtual ICollection<Elements_in_template> Elements_in_template { get; set; }
     }
 }

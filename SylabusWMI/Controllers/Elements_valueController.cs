@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class SylabusController : ApiController
+    public class Elements_valueController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Sylabus
-        public IQueryable<Sylabu> GetSylabus()
+        // GET: api/Elements_value
+        public IQueryable<Elements_value> GetElements_value()
         {
-            return db.Sylabus;
+            return db.Elements_value;
         }
 
-        // GET: api/Sylabus/5
-        [ResponseType(typeof(Sylabu))]
-        public async Task<IHttpActionResult> GetSylabu(string id)
+        // GET: api/Elements_value/5
+        [ResponseType(typeof(Elements_value))]
+        public async Task<IHttpActionResult> GetElements_value(int id)
         {
-            Sylabu sylabu = await db.Sylabus.FindAsync(id);
-            if (sylabu == null)
+            Elements_value elements_value = await db.Elements_value.FindAsync(id);
+            if (elements_value == null)
             {
                 return NotFound();
             }
 
-            return Ok(sylabu);
+            return Ok(elements_value);
         }
 
-        // PUT: api/Sylabus/5
+        // PUT: api/Elements_value/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSylabu(string id, Sylabu sylabu)
+        public async Task<IHttpActionResult> PutElements_value(int id, Elements_value elements_value)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != sylabu.Subject_code)
+            if (id != elements_value.Id_value)
             {
                 return BadRequest();
             }
 
-            db.Entry(sylabu).State = EntityState.Modified;
+            db.Entry(elements_value).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SylabuExists(id))
+                if (!Elements_valueExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Sylabus
-        [ResponseType(typeof(Sylabu))]
-        public async Task<IHttpActionResult> PostSylabu(Sylabu sylabu)
+        // POST: api/Elements_value
+        [ResponseType(typeof(Elements_value))]
+        public async Task<IHttpActionResult> PostElements_value(Elements_value elements_value)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Sylabus.Add(sylabu);
+            db.Elements_value.Add(elements_value);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (SylabuExists(sylabu.Subject_code))
+                if (Elements_valueExists(elements_value.Id_value))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = sylabu.Subject_code }, sylabu);
+            return CreatedAtRoute("DefaultApi", new { id = elements_value.Id_value }, elements_value);
         }
 
-        // DELETE: api/Sylabus/5
-        [ResponseType(typeof(Sylabu))]
-        public async Task<IHttpActionResult> DeleteSylabu(string id)
+        // DELETE: api/Elements_value/5
+        [ResponseType(typeof(Elements_value))]
+        public async Task<IHttpActionResult> DeleteElements_value(int id)
         {
-            Sylabu sylabu = await db.Sylabus.FindAsync(id);
-            if (sylabu == null)
+            Elements_value elements_value = await db.Elements_value.FindAsync(id);
+            if (elements_value == null)
             {
                 return NotFound();
             }
 
-            db.Sylabus.Remove(sylabu);
+            db.Elements_value.Remove(elements_value);
             await db.SaveChangesAsync();
 
-            return Ok(sylabu);
+            return Ok(elements_value);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SylabuExists(string id)
+        private bool Elements_valueExists(int id)
         {
-            return db.Sylabus.Count(e => e.Subject_code == id) > 0;
+            return db.Elements_value.Count(e => e.Id_value == id) > 0;
         }
     }
 }

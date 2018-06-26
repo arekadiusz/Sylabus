@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class Wartosc_ElementuController : ApiController
+    public class UsersController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Wartosc_Elementu
-        public IQueryable<Wartosc_Elementu> GetWartosc_Elementu()
+        // GET: api/Users
+        public IQueryable<User> GetUsers()
         {
-            return db.Wartosc_Elementu;
+            return db.Users;
         }
 
-        // GET: api/Wartosc_Elementu/5
-        [ResponseType(typeof(Wartosc_Elementu))]
-        public async Task<IHttpActionResult> GetWartosc_Elementu(int id)
+        // GET: api/Users/5
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> GetUser(int id)
         {
-            Wartosc_Elementu wartosc_Elementu = await db.Wartosc_Elementu.FindAsync(id);
-            if (wartosc_Elementu == null)
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(wartosc_Elementu);
+            return Ok(user);
         }
 
-        // PUT: api/Wartosc_Elementu/5
+        // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutWartosc_Elementu(int id, Wartosc_Elementu wartosc_Elementu)
+        public async Task<IHttpActionResult> PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != wartosc_Elementu.Id_wartosci)
+            if (id != user.E_mail)
             {
                 return BadRequest();
             }
 
-            db.Entry(wartosc_Elementu).State = EntityState.Modified;
+            db.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Wartosc_ElementuExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Wartosc_Elementu
-        [ResponseType(typeof(Wartosc_Elementu))]
-        public async Task<IHttpActionResult> PostWartosc_Elementu(Wartosc_Elementu wartosc_Elementu)
+        // POST: api/Users
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Wartosc_Elementu.Add(wartosc_Elementu);
+            db.Users.Add(user);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (Wartosc_ElementuExists(wartosc_Elementu.Id_wartosci))
+                if (UserExists(user.E_mail))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = wartosc_Elementu.Id_wartosci }, wartosc_Elementu);
+            return CreatedAtRoute("DefaultApi", new { id = user.E_mail }, user);
         }
 
-        // DELETE: api/Wartosc_Elementu/5
-        [ResponseType(typeof(Wartosc_Elementu))]
-        public async Task<IHttpActionResult> DeleteWartosc_Elementu(int id)
+        // DELETE: api/Users/5
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> DeleteUser(int id)
         {
-            Wartosc_Elementu wartosc_Elementu = await db.Wartosc_Elementu.FindAsync(id);
-            if (wartosc_Elementu == null)
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            db.Wartosc_Elementu.Remove(wartosc_Elementu);
+            db.Users.Remove(user);
             await db.SaveChangesAsync();
 
-            return Ok(wartosc_Elementu);
+            return Ok(user);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool Wartosc_ElementuExists(int id)
+        private bool UserExists(int id)
         {
-            return db.Wartosc_Elementu.Count(e => e.Id_wartosci == id) > 0;
+            return db.Users.Count(e => e.E_mail == id) > 0;
         }
     }
 }

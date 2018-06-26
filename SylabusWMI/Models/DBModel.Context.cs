@@ -25,16 +25,16 @@ namespace SylabusWMI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Elementy_siatki> Elementy_siatki { get; set; }
-        public virtual DbSet<Elementy_template> Elementy_template { get; set; }
-        public virtual DbSet<Program_studiow> Program_studiow { get; set; }
+        public virtual DbSet<Elements_in_template> Elements_in_template { get; set; }
+        public virtual DbSet<Elements_value> Elements_value { get; set; }
+        public virtual DbSet<Faculty> Faculties { get; set; }
+        public virtual DbSet<Ours_grid> Ours_grid { get; set; }
+        public virtual DbSet<Ours_grid_elements> Ours_grid_elements { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Siatka_godzin> Siatka_godzin { get; set; }
+        public virtual DbSet<Study_programme> Study_programme { get; set; }
         public virtual DbSet<Sylabu> Sylabus { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Template> Templates { get; set; }
-        public virtual DbSet<Uzytkownicy> Uzytkownicies { get; set; }
-        public virtual DbSet<Wartosc_Elementu> Wartosc_Elementu { get; set; }
-        public virtual DbSet<Wydzial> Wydzials { get; set; }
+        public virtual DbSet<Template_elements> Template_elements { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

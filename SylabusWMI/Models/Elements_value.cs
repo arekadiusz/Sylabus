@@ -12,14 +12,17 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Wartosc_Elementu
+    public partial class Elements_value
     {
-        public int Id_wartosci { get; set; }
-        public string Vartość { get; set; }
-        public Nullable<int> Element_template { get; set; }
+        public int Id_value { get; set; }
+        public string Value_PL { get; set; }
+        public Nullable<int> Elements_template { get; set; }
         public string Sylabus { get; set; }
+        public string Template { get; set; }
+        public string Value_EN { get; set; }
     
-        public virtual Elementy_template Elementy_template { get; set; }
+        public virtual Elements_in_template Elements_in_template { get; set; }
         public virtual Sylabu Sylabu { get; set; }
+        public virtual Template Template1 { get; set; }
     }
 }

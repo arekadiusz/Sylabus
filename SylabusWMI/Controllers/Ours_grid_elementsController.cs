@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class Siatka_godzinController : ApiController
+    public class Ours_grid_elementsController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Siatka_godzin
-        public IQueryable<Siatka_godzin> GetSiatka_godzin()
+        // GET: api/Ours_grid_elements
+        public IQueryable<Ours_grid_elements> GetOurs_grid_elements()
         {
-            return db.Siatka_godzin;
+            return db.Ours_grid_elements;
         }
 
-        // GET: api/Siatka_godzin/5
-        [ResponseType(typeof(Siatka_godzin))]
-        public async Task<IHttpActionResult> GetSiatka_godzin(string id)
+        // GET: api/Ours_grid_elements/5
+        [ResponseType(typeof(Ours_grid_elements))]
+        public async Task<IHttpActionResult> GetOurs_grid_elements(int id)
         {
-            Siatka_godzin siatka_godzin = await db.Siatka_godzin.FindAsync(id);
-            if (siatka_godzin == null)
+            Ours_grid_elements ours_grid_elements = await db.Ours_grid_elements.FindAsync(id);
+            if (ours_grid_elements == null)
             {
                 return NotFound();
             }
 
-            return Ok(siatka_godzin);
+            return Ok(ours_grid_elements);
         }
 
-        // PUT: api/Siatka_godzin/5
+        // PUT: api/Ours_grid_elements/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSiatka_godzin(string id, Siatka_godzin siatka_godzin)
+        public async Task<IHttpActionResult> PutOurs_grid_elements(int id, Ours_grid_elements ours_grid_elements)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != siatka_godzin.Id_siatki)
+            if (id != ours_grid_elements.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(siatka_godzin).State = EntityState.Modified;
+            db.Entry(ours_grid_elements).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Siatka_godzinExists(id))
+                if (!Ours_grid_elementsExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Siatka_godzin
-        [ResponseType(typeof(Siatka_godzin))]
-        public async Task<IHttpActionResult> PostSiatka_godzin(Siatka_godzin siatka_godzin)
+        // POST: api/Ours_grid_elements
+        [ResponseType(typeof(Ours_grid_elements))]
+        public async Task<IHttpActionResult> PostOurs_grid_elements(Ours_grid_elements ours_grid_elements)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Siatka_godzin.Add(siatka_godzin);
+            db.Ours_grid_elements.Add(ours_grid_elements);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (Siatka_godzinExists(siatka_godzin.Id_siatki))
+                if (Ours_grid_elementsExists(ours_grid_elements.Id))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = siatka_godzin.Id_siatki }, siatka_godzin);
+            return CreatedAtRoute("DefaultApi", new { id = ours_grid_elements.Id }, ours_grid_elements);
         }
 
-        // DELETE: api/Siatka_godzin/5
-        [ResponseType(typeof(Siatka_godzin))]
-        public async Task<IHttpActionResult> DeleteSiatka_godzin(string id)
+        // DELETE: api/Ours_grid_elements/5
+        [ResponseType(typeof(Ours_grid_elements))]
+        public async Task<IHttpActionResult> DeleteOurs_grid_elements(int id)
         {
-            Siatka_godzin siatka_godzin = await db.Siatka_godzin.FindAsync(id);
-            if (siatka_godzin == null)
+            Ours_grid_elements ours_grid_elements = await db.Ours_grid_elements.FindAsync(id);
+            if (ours_grid_elements == null)
             {
                 return NotFound();
             }
 
-            db.Siatka_godzin.Remove(siatka_godzin);
+            db.Ours_grid_elements.Remove(ours_grid_elements);
             await db.SaveChangesAsync();
 
-            return Ok(siatka_godzin);
+            return Ok(ours_grid_elements);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool Siatka_godzinExists(string id)
+        private bool Ours_grid_elementsExists(int id)
         {
-            return db.Siatka_godzin.Count(e => e.Id_siatki == id) > 0;
+            return db.Ours_grid_elements.Count(e => e.Id == id) > 0;
         }
     }
 }

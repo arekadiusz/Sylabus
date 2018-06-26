@@ -45,7 +45,7 @@ namespace SylabusWMI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != role.Nazwa_Roli)
+            if (id != role.Roles_name)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (RoleExists(role.Nazwa_Roli))
+                if (RoleExists(role.Roles_name))
                 {
                     return Conflict();
                 }
@@ -98,7 +98,7 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = role.Nazwa_Roli }, role);
+            return CreatedAtRoute("DefaultApi", new { id = role.Roles_name }, role);
         }
 
         // DELETE: api/Roles/5
@@ -128,7 +128,7 @@ namespace SylabusWMI.Controllers
 
         private bool RoleExists(string id)
         {
-            return db.Roles.Count(e => e.Nazwa_Roli == id) > 0;
+            return db.Roles.Count(e => e.Roles_name == id) > 0;
         }
     }
 }

@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class Program_studiowController : ApiController
+    public class Ours_gridController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Program_studiow
-        public IQueryable<Program_studiow> GetProgram_studiow()
+        // GET: api/Ours_grid
+        public IQueryable<Ours_grid> GetOurs_grid()
         {
-            return db.Program_studiow;
+            return db.Ours_grid;
         }
 
-        // GET: api/Program_studiow/5
-        [ResponseType(typeof(Program_studiow))]
-        public async Task<IHttpActionResult> GetProgram_studiow(string id)
+        // GET: api/Ours_grid/5
+        [ResponseType(typeof(Ours_grid))]
+        public async Task<IHttpActionResult> GetOurs_grid(string id)
         {
-            Program_studiow program_studiow = await db.Program_studiow.FindAsync(id);
-            if (program_studiow == null)
+            Ours_grid ours_grid = await db.Ours_grid.FindAsync(id);
+            if (ours_grid == null)
             {
                 return NotFound();
             }
 
-            return Ok(program_studiow);
+            return Ok(ours_grid);
         }
 
-        // PUT: api/Program_studiow/5
+        // PUT: api/Ours_grid/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProgram_studiow(string id, Program_studiow program_studiow)
+        public async Task<IHttpActionResult> PutOurs_grid(string id, Ours_grid ours_grid)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != program_studiow.Kod_przedmiotu)
+            if (id != ours_grid.Id_grid)
             {
                 return BadRequest();
             }
 
-            db.Entry(program_studiow).State = EntityState.Modified;
+            db.Entry(ours_grid).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Program_studiowExists(id))
+                if (!Ours_gridExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Program_studiow
-        [ResponseType(typeof(Program_studiow))]
-        public async Task<IHttpActionResult> PostProgram_studiow(Program_studiow program_studiow)
+        // POST: api/Ours_grid
+        [ResponseType(typeof(Ours_grid))]
+        public async Task<IHttpActionResult> PostOurs_grid(Ours_grid ours_grid)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Program_studiow.Add(program_studiow);
+            db.Ours_grid.Add(ours_grid);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (Program_studiowExists(program_studiow.Kod_przedmiotu))
+                if (Ours_gridExists(ours_grid.Id_grid))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = program_studiow.Kod_przedmiotu }, program_studiow);
+            return CreatedAtRoute("DefaultApi", new { id = ours_grid.Id_grid }, ours_grid);
         }
 
-        // DELETE: api/Program_studiow/5
-        [ResponseType(typeof(Program_studiow))]
-        public async Task<IHttpActionResult> DeleteProgram_studiow(string id)
+        // DELETE: api/Ours_grid/5
+        [ResponseType(typeof(Ours_grid))]
+        public async Task<IHttpActionResult> DeleteOurs_grid(string id)
         {
-            Program_studiow program_studiow = await db.Program_studiow.FindAsync(id);
-            if (program_studiow == null)
+            Ours_grid ours_grid = await db.Ours_grid.FindAsync(id);
+            if (ours_grid == null)
             {
                 return NotFound();
             }
 
-            db.Program_studiow.Remove(program_studiow);
+            db.Ours_grid.Remove(ours_grid);
             await db.SaveChangesAsync();
 
-            return Ok(program_studiow);
+            return Ok(ours_grid);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool Program_studiowExists(string id)
+        private bool Ours_gridExists(string id)
         {
-            return db.Program_studiow.Count(e => e.Kod_przedmiotu == id) > 0;
+            return db.Ours_grid.Count(e => e.Id_grid == id) > 0;
         }
     }
 }

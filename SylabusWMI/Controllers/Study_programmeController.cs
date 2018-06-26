@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class Elementy_siatkiController : ApiController
+    public class Study_programmeController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Elementy_siatki
-        public IQueryable<Elementy_siatki> GetElementy_siatki()
+        // GET: api/Study_programme
+        public IQueryable<Study_programme> GetStudy_programme()
         {
-            return db.Elementy_siatki;
+            return db.Study_programme;
         }
 
-        // GET: api/Elementy_siatki/5
-        [ResponseType(typeof(Elementy_siatki))]
-        public async Task<IHttpActionResult> GetElementy_siatki(int id)
+        // GET: api/Study_programme/5
+        [ResponseType(typeof(Study_programme))]
+        public async Task<IHttpActionResult> GetStudy_programme(int id)
         {
-            Elementy_siatki elementy_siatki = await db.Elementy_siatki.FindAsync(id);
-            if (elementy_siatki == null)
+            Study_programme study_programme = await db.Study_programme.FindAsync(id);
+            if (study_programme == null)
             {
                 return NotFound();
             }
 
-            return Ok(elementy_siatki);
+            return Ok(study_programme);
         }
 
-        // PUT: api/Elementy_siatki/5
+        // PUT: api/Study_programme/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutElementy_siatki(int id, Elementy_siatki elementy_siatki)
+        public async Task<IHttpActionResult> PutStudy_programme(int id, Study_programme study_programme)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != elementy_siatki.Id)
+            if (id != study_programme.Id_study_program)
             {
                 return BadRequest();
             }
 
-            db.Entry(elementy_siatki).State = EntityState.Modified;
+            db.Entry(study_programme).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Elementy_siatkiExists(id))
+                if (!Study_programmeExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Elementy_siatki
-        [ResponseType(typeof(Elementy_siatki))]
-        public async Task<IHttpActionResult> PostElementy_siatki(Elementy_siatki elementy_siatki)
+        // POST: api/Study_programme
+        [ResponseType(typeof(Study_programme))]
+        public async Task<IHttpActionResult> PostStudy_programme(Study_programme study_programme)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Elementy_siatki.Add(elementy_siatki);
+            db.Study_programme.Add(study_programme);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (Elementy_siatkiExists(elementy_siatki.Id))
+                if (Study_programmeExists(study_programme.Id_study_program))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = elementy_siatki.Id }, elementy_siatki);
+            return CreatedAtRoute("DefaultApi", new { id = study_programme.Id_study_program }, study_programme);
         }
 
-        // DELETE: api/Elementy_siatki/5
-        [ResponseType(typeof(Elementy_siatki))]
-        public async Task<IHttpActionResult> DeleteElementy_siatki(int id)
+        // DELETE: api/Study_programme/5
+        [ResponseType(typeof(Study_programme))]
+        public async Task<IHttpActionResult> DeleteStudy_programme(int id)
         {
-            Elementy_siatki elementy_siatki = await db.Elementy_siatki.FindAsync(id);
-            if (elementy_siatki == null)
+            Study_programme study_programme = await db.Study_programme.FindAsync(id);
+            if (study_programme == null)
             {
                 return NotFound();
             }
 
-            db.Elementy_siatki.Remove(elementy_siatki);
+            db.Study_programme.Remove(study_programme);
             await db.SaveChangesAsync();
 
-            return Ok(elementy_siatki);
+            return Ok(study_programme);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool Elementy_siatkiExists(int id)
+        private bool Study_programmeExists(int id)
         {
-            return db.Elementy_siatki.Count(e => e.Id == id) > 0;
+            return db.Study_programme.Count(e => e.Id_study_program == id) > 0;
         }
     }
 }

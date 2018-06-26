@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class Elementy_templateController : ApiController
+    public class Elements_in_templateController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Elementy_template
-        public IQueryable<Elementy_template> GetElementy_template()
+        // GET: api/Elements_in_template
+        public IQueryable<Elements_in_template> GetElements_in_template()
         {
-            return db.Elementy_template;
+            return db.Elements_in_template;
         }
 
-        // GET: api/Elementy_template/5
-        [ResponseType(typeof(Elementy_template))]
-        public async Task<IHttpActionResult> GetElementy_template(int id)
+        // GET: api/Elements_in_template/5
+        [ResponseType(typeof(Elements_in_template))]
+        public async Task<IHttpActionResult> GetElements_in_template(int id)
         {
-            Elementy_template elementy_template = await db.Elementy_template.FindAsync(id);
-            if (elementy_template == null)
+            Elements_in_template elements_in_template = await db.Elements_in_template.FindAsync(id);
+            if (elements_in_template == null)
             {
                 return NotFound();
             }
 
-            return Ok(elementy_template);
+            return Ok(elements_in_template);
         }
 
-        // PUT: api/Elementy_template/5
+        // PUT: api/Elements_in_template/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutElementy_template(int id, Elementy_template elementy_template)
+        public async Task<IHttpActionResult> PutElements_in_template(int id, Elements_in_template elements_in_template)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != elementy_template.Id)
+            if (id != elements_in_template.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(elementy_template).State = EntityState.Modified;
+            db.Entry(elements_in_template).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Elementy_templateExists(id))
+                if (!Elements_in_templateExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Elementy_template
-        [ResponseType(typeof(Elementy_template))]
-        public async Task<IHttpActionResult> PostElementy_template(Elementy_template elementy_template)
+        // POST: api/Elements_in_template
+        [ResponseType(typeof(Elements_in_template))]
+        public async Task<IHttpActionResult> PostElements_in_template(Elements_in_template elements_in_template)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Elementy_template.Add(elementy_template);
+            db.Elements_in_template.Add(elements_in_template);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (Elementy_templateExists(elementy_template.Id))
+                if (Elements_in_templateExists(elements_in_template.Id))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = elementy_template.Id }, elementy_template);
+            return CreatedAtRoute("DefaultApi", new { id = elements_in_template.Id }, elements_in_template);
         }
 
-        // DELETE: api/Elementy_template/5
-        [ResponseType(typeof(Elementy_template))]
-        public async Task<IHttpActionResult> DeleteElementy_template(int id)
+        // DELETE: api/Elements_in_template/5
+        [ResponseType(typeof(Elements_in_template))]
+        public async Task<IHttpActionResult> DeleteElements_in_template(int id)
         {
-            Elementy_template elementy_template = await db.Elementy_template.FindAsync(id);
-            if (elementy_template == null)
+            Elements_in_template elements_in_template = await db.Elements_in_template.FindAsync(id);
+            if (elements_in_template == null)
             {
                 return NotFound();
             }
 
-            db.Elementy_template.Remove(elementy_template);
+            db.Elements_in_template.Remove(elements_in_template);
             await db.SaveChangesAsync();
 
-            return Ok(elementy_template);
+            return Ok(elements_in_template);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool Elementy_templateExists(int id)
+        private bool Elements_in_templateExists(int id)
         {
-            return db.Elementy_template.Count(e => e.Id == id) > 0;
+            return db.Elements_in_template.Count(e => e.Id == id) > 0;
         }
     }
 }

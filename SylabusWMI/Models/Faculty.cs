@@ -12,26 +12,26 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Siatka_godzin
+    public partial class Faculty
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Siatka_godzin()
+        public Faculty()
         {
-            this.Elementy_siatki = new HashSet<Elementy_siatki>();
-            this.Sylabus = new HashSet<Sylabu>();
+            this.Study_programme = new HashSet<Study_programme>();
+            this.Ours_grid = new HashSet<Ours_grid>();
+            this.Templates = new HashSet<Template>();
         }
     
-        public string Id_siatki { get; set; }
-        public string Program_studiow { get; set; }
-        public Nullable<int> Rok_rekrutacji { get; set; }
-        public Nullable<int> Semestr { get; set; }
-        public Nullable<int> Wydział { get; set; }
+        public int Id_faculty { get; set; }
+        public string Name_PL { get; set; }
+        public string Name_ENG { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Elementy_siatki> Elementy_siatki { get; set; }
-        public virtual Program_studiow Program_studiow1 { get; set; }
-        public virtual Wydzial Wydzial { get; set; }
+        public virtual ICollection<Study_programme> Study_programme { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sylabu> Sylabus { get; set; }
+        public virtual ICollection<Ours_grid> Ours_grid { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Template> Templates { get; set; }
+        public virtual User User { get; set; }
     }
 }

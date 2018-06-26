@@ -17,15 +17,14 @@ namespace SylabusWMI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.Uzytkownicies = new HashSet<Uzytkownicy>();
+            this.Users = new HashSet<User>();
         }
     
-        public int Id_roli { get; set; }
-        public string Nazwa_Roli { get; set; }
-        public string Opis_roli { get; set; }
-
-        
+        public int Id_roles { get; set; }
+        public string Roles_name { get; set; }
+        public string Roles_description { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Uzytkownicy> Uzytkownicies { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

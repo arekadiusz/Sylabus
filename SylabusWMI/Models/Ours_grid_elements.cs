@@ -12,13 +12,13 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Elementy_siatki
+    public partial class Ours_grid_elements
     {
         public int Id { get; set; }
         public string Sylabus { get; set; }
-        public string Siatka { get; set; }
+        public string Ours_grid { get; set; }
+        public string Semester { get; set; }
     
-        public virtual Siatka_godzin Siatka_godzin { get; set; }
-        public virtual Sylabu Sylabu { get; set; }
+        public virtual Ours_grid Ours_grid1 { get; set; }
     }
 }

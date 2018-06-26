@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class WydzialsController : ApiController
+    public class FacultiesController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Wydzials
-        public IQueryable<Wydzial> GetWydzials()
+        // GET: api/Faculties
+        public IQueryable<Faculty> GetFaculties()
         {
-            return db.Wydzials;
+            return db.Faculties;
         }
 
-        // GET: api/Wydzials/5
-        [ResponseType(typeof(Wydzial))]
-        public async Task<IHttpActionResult> GetWydzial(int id)
+        // GET: api/Faculties/5
+        [ResponseType(typeof(Faculty))]
+        public async Task<IHttpActionResult> GetFaculty(int id)
         {
-            Wydzial wydzial = await db.Wydzials.FindAsync(id);
-            if (wydzial == null)
+            Faculty faculty = await db.Faculties.FindAsync(id);
+            if (faculty == null)
             {
                 return NotFound();
             }
 
-            return Ok(wydzial);
+            return Ok(faculty);
         }
 
-        // PUT: api/Wydzials/5
+        // PUT: api/Faculties/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutWydzial(int id, Wydzial wydzial)
+        public async Task<IHttpActionResult> PutFaculty(int id, Faculty faculty)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != wydzial.Id_jednostki)
+            if (id != faculty.Id_faculty)
             {
                 return BadRequest();
             }
 
-            db.Entry(wydzial).State = EntityState.Modified;
+            db.Entry(faculty).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!WydzialExists(id))
+                if (!FacultyExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Wydzials
-        [ResponseType(typeof(Wydzial))]
-        public async Task<IHttpActionResult> PostWydzial(Wydzial wydzial)
+        // POST: api/Faculties
+        [ResponseType(typeof(Faculty))]
+        public async Task<IHttpActionResult> PostFaculty(Faculty faculty)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Wydzials.Add(wydzial);
+            db.Faculties.Add(faculty);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (WydzialExists(wydzial.Id_jednostki))
+                if (FacultyExists(faculty.Id_faculty))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = wydzial.Id_jednostki }, wydzial);
+            return CreatedAtRoute("DefaultApi", new { id = faculty.Id_faculty }, faculty);
         }
 
-        // DELETE: api/Wydzials/5
-        [ResponseType(typeof(Wydzial))]
-        public async Task<IHttpActionResult> DeleteWydzial(int id)
+        // DELETE: api/Faculties/5
+        [ResponseType(typeof(Faculty))]
+        public async Task<IHttpActionResult> DeleteFaculty(int id)
         {
-            Wydzial wydzial = await db.Wydzials.FindAsync(id);
-            if (wydzial == null)
+            Faculty faculty = await db.Faculties.FindAsync(id);
+            if (faculty == null)
             {
                 return NotFound();
             }
 
-            db.Wydzials.Remove(wydzial);
+            db.Faculties.Remove(faculty);
             await db.SaveChangesAsync();
 
-            return Ok(wydzial);
+            return Ok(faculty);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool WydzialExists(int id)
+        private bool FacultyExists(int id)
         {
-            return db.Wydzials.Count(e => e.Id_jednostki == id) > 0;
+            return db.Faculties.Count(e => e.Id_faculty == id) > 0;
         }
     }
 }

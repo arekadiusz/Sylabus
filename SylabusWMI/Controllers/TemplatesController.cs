@@ -45,7 +45,7 @@ namespace SylabusWMI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != template.Kod_template)
+            if (id != template.Template_code)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (TemplateExists(template.Kod_template))
+                if (TemplateExists(template.Template_code))
                 {
                     return Conflict();
                 }
@@ -98,7 +98,7 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = template.Kod_template }, template);
+            return CreatedAtRoute("DefaultApi", new { id = template.Template_code }, template);
         }
 
         // DELETE: api/Templates/5
@@ -128,7 +128,7 @@ namespace SylabusWMI.Controllers
 
         private bool TemplateExists(string id)
         {
-            return db.Templates.Count(e => e.Kod_template == id) > 0;
+            return db.Templates.Count(e => e.Template_code == id) > 0;
         }
     }
 }

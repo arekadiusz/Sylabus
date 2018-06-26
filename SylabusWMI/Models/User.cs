@@ -12,22 +12,22 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Uzytkownicy
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Uzytkownicy()
+        public User()
         {
             this.Sylabus = new HashSet<Sylabu>();
         }
     
-        public Nullable<int> Id { get; set; }
+        public Nullable<int> Id_user { get; set; }
         public int E_mail { get; set; }
-        public string Rola { get; set; }
-        public string Wydzial { get; set; }
+        public string Roles { get; set; }
+        public string Faculty { get; set; }
     
+        public virtual Faculty Faculty1 { get; set; }
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sylabu> Sylabus { get; set; }
-        public virtual Wydzial Wydzial1 { get; set; }
     }
 }

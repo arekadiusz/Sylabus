@@ -12,23 +12,22 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Sylabu
+    public partial class Elements_in_template
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sylabu()
+        public Elements_in_template()
         {
             this.Elements_value = new HashSet<Elements_value>();
         }
     
-        public string Id_sylabus { get; set; }
-        public string Subject_code { get; set; }
+        public int Id { get; set; }
         public string Template { get; set; }
-        public string Ours_grid { get; set; }
-        public Nullable<int> Lecturer { get; set; }
+        public Nullable<int> Element { get; set; }
+        public Nullable<int> Order { get; set; }
     
+        public virtual Template Template1 { get; set; }
+        public virtual Template_elements Template_elements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Elements_value> Elements_value { get; set; }
-        public virtual Template Template1 { get; set; }
-        public virtual User User { get; set; }
     }
 }

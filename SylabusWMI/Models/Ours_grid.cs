@@ -12,25 +12,22 @@ namespace SylabusWMI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Elementy_template
+    public partial class Ours_grid
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Elementy_template()
+        public Ours_grid()
         {
-            this.Wartosc_Elementu = new HashSet<Wartosc_Elementu>();
+            this.Ours_grid_elements = new HashSet<Ours_grid_elements>();
         }
     
-        public int Id { get; set; }
-        public string Nazwa_elementu { get; set; }
-        public string Tempalate { get; set; }
-        public string Sylabus { get; set; }
-        public Nullable<bool> Obowiazkowy { get; set; }
-        public Nullable<int> Kolejność { get; set; }
-        public string Typ_tabeli { get; set; }
+        public string Id_grid { get; set; }
+        public Nullable<int> Study_programme { get; set; }
+        public Nullable<int> Recruitment_year { get; set; }
+        public Nullable<int> Faculty { get; set; }
     
-        public virtual Sylabu Sylabu { get; set; }
-        public virtual Template Template { get; set; }
+        public virtual Faculty Faculty1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Wartosc_Elementu> Wartosc_Elementu { get; set; }
+        public virtual ICollection<Ours_grid_elements> Ours_grid_elements { get; set; }
+        public virtual Study_programme Study_programme1 { get; set; }
     }
 }

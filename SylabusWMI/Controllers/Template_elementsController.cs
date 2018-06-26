@@ -13,44 +13,44 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class UzytkowniciesController : ApiController
+    public class Template_elementsController : ApiController
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: api/Uzytkownicies
-        public IQueryable<Uzytkownicy> GetUzytkownicies()
+        // GET: api/Template_elements
+        public IQueryable<Template_elements> GetTemplate_elements()
         {
-            return db.Uzytkownicies;
+            return db.Template_elements;
         }
 
-        // GET: api/Uzytkownicies/5
-        [ResponseType(typeof(Uzytkownicy))]
-        public async Task<IHttpActionResult> GetUzytkownicy(int id)
+        // GET: api/Template_elements/5
+        [ResponseType(typeof(Template_elements))]
+        public async Task<IHttpActionResult> GetTemplate_elements(int id)
         {
-            Uzytkownicy uzytkownicy = await db.Uzytkownicies.FindAsync(id);
-            if (uzytkownicy == null)
+            Template_elements template_elements = await db.Template_elements.FindAsync(id);
+            if (template_elements == null)
             {
                 return NotFound();
             }
 
-            return Ok(uzytkownicy);
+            return Ok(template_elements);
         }
 
-        // PUT: api/Uzytkownicies/5
+        // PUT: api/Template_elements/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUzytkownicy(int id, Uzytkownicy uzytkownicy)
+        public async Task<IHttpActionResult> PutTemplate_elements(int id, Template_elements template_elements)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != uzytkownicy.E_mail)
+            if (id != template_elements.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(uzytkownicy).State = EntityState.Modified;
+            db.Entry(template_elements).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UzytkownicyExists(id))
+                if (!Template_elementsExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +71,16 @@ namespace SylabusWMI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Uzytkownicies
-        [ResponseType(typeof(Uzytkownicy))]
-        public async Task<IHttpActionResult> PostUzytkownicy(Uzytkownicy uzytkownicy)
+        // POST: api/Template_elements
+        [ResponseType(typeof(Template_elements))]
+        public async Task<IHttpActionResult> PostTemplate_elements(Template_elements template_elements)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Uzytkownicies.Add(uzytkownicy);
+            db.Template_elements.Add(template_elements);
 
             try
             {
@@ -88,7 +88,7 @@ namespace SylabusWMI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (UzytkownicyExists(uzytkownicy.E_mail))
+                if (Template_elementsExists(template_elements.Id))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace SylabusWMI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = uzytkownicy.E_mail }, uzytkownicy);
+            return CreatedAtRoute("DefaultApi", new { id = template_elements.Id }, template_elements);
         }
 
-        // DELETE: api/Uzytkownicies/5
-        [ResponseType(typeof(Uzytkownicy))]
-        public async Task<IHttpActionResult> DeleteUzytkownicy(int id)
+        // DELETE: api/Template_elements/5
+        [ResponseType(typeof(Template_elements))]
+        public async Task<IHttpActionResult> DeleteTemplate_elements(int id)
         {
-            Uzytkownicy uzytkownicy = await db.Uzytkownicies.FindAsync(id);
-            if (uzytkownicy == null)
+            Template_elements template_elements = await db.Template_elements.FindAsync(id);
+            if (template_elements == null)
             {
                 return NotFound();
             }
 
-            db.Uzytkownicies.Remove(uzytkownicy);
+            db.Template_elements.Remove(template_elements);
             await db.SaveChangesAsync();
 
-            return Ok(uzytkownicy);
+            return Ok(template_elements);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace SylabusWMI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UzytkownicyExists(int id)
+        private bool Template_elementsExists(int id)
         {
-            return db.Uzytkownicies.Count(e => e.E_mail == id) > 0;
+            return db.Template_elements.Count(e => e.Id == id) > 0;
         }
     }
 }

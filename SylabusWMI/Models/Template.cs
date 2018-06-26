@@ -17,17 +17,22 @@ namespace SylabusWMI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Template()
         {
-            this.Elementy_template = new HashSet<Elementy_template>();
+            this.Elements_in_template = new HashSet<Elements_in_template>();
+            this.Elements_value = new HashSet<Elements_value>();
             this.Sylabus = new HashSet<Sylabu>();
         }
     
         public int Id { get; set; }
-        public string Kod_template { get; set; }
-        public int Rok { get; set; }
-        public string Nazwa { get; set; }
+        public string Template_code { get; set; }
+        public int Year { get; set; }
+        public string Template_name { get; set; }
+        public Nullable<int> Faculty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Elementy_template> Elementy_template { get; set; }
+        public virtual ICollection<Elements_in_template> Elements_in_template { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Elements_value> Elements_value { get; set; }
+        public virtual Faculty Faculty1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sylabu> Sylabus { get; set; }
     }
