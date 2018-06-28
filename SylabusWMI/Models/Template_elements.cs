@@ -24,6 +24,7 @@ namespace SylabusWMI.Models
         public string Elements_name { get; set; }
         public string Tempalate { get; set; }
         public Nullable<bool> Obligatory { get; set; }
+        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Elements_in_template> Elements_in_template { get; set; }

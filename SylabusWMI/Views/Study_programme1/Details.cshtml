@@ -1,0 +1,58 @@
+﻿@model SylabusWMI.Models.Study_programme
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Study_programme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_mode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_mode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_degree)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_degree)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_PL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_PL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_ENG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_ENG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty1.Name_PL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty1.Name_PL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_study_program }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,16 +1,12 @@
 ﻿@{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Index";
 }
 <div class="container" style="padding-left:0">
     <ul class="nav navbar-nav">
 
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("Panel administracyjny", "Admin", "Home")</li>
+        <li>@Html.ActionLink("Panel administracyjny", "Index", "Admin")</li>
         <li>@Html.ActionLink("Panel wykładowcy", "Index", "Instructor")</li>
         <li>@Html.ActionLink("Panel template", "Index", "Template")</li>
     </ul>
 </div>
-
-
-
-

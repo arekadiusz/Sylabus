@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sylabusWMIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sylabusWMIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Elements_in_template">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,7 +29,7 @@
           <Key>
             <PropertyRef Name="Id_faculty" />
           </Key>
-          <Property Name="Id_faculty" Type="int" Nullable="false" />
+          <Property Name="Id_faculty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name_PL" Type="varchar" MaxLength="50" />
           <Property Name="Name_ENG" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -86,7 +86,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Template_code" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Year" Type="datetime" Nullable="false" />
           <Property Name="Template_name" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Faculty" Type="int" />
         </EntityType>
@@ -98,6 +98,7 @@
           <Property Name="Elements_name" Type="varchar" MaxLength="100" />
           <Property Name="Tempalate" Type="varchar" MaxLength="50" />
           <Property Name="Obligatory" Type="bit" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -345,8 +346,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sylabusWMIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -451,7 +451,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Template_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Template_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Faculty" Type="Int32" />
           <NavigationProperty Name="Elements_in_template" Relationship="Self.FK_Elements_in_template_Template" FromRole="Template" ToRole="Elements_in_template" />
@@ -468,6 +468,7 @@
           <Property Name="Tempalate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Obligatory" Type="Boolean" />
           <NavigationProperty Name="Elements_in_template" Relationship="Self.FK_Elements_in_template_Template_elements" FromRole="Template_elements" ToRole="Elements_in_template" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -821,6 +822,7 @@
           <EntitySetMapping Name="Template_elements">
             <EntityTypeMapping TypeName="sylabusWMIModel.Template_elements">
               <MappingFragment StoreEntitySet="Template_elements">
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Elements_name" ColumnName="Elements_name" />
                 <ScalarProperty Name="Tempalate" ColumnName="Tempalate" />

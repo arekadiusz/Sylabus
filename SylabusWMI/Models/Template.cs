@@ -24,7 +24,7 @@ namespace SylabusWMI.Models
     
         public int Id { get; set; }
         public string Template_code { get; set; }
-        public int Year { get; set; }
+        public DateTime Year { get; set; }
         public string Template_name { get; set; }
         public Nullable<int> Faculty { get; set; }
     

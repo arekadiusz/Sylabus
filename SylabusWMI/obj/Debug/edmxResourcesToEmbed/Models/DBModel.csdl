@@ -101,7 +101,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Template_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Template_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Faculty" Type="Int32" />
     <NavigationProperty Name="Elements_in_template" Relationship="Self.FK_Elements_in_template_Template" FromRole="Template" ToRole="Elements_in_template" />
@@ -118,6 +118,7 @@
     <Property Name="Tempalate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Obligatory" Type="Boolean" />
     <NavigationProperty Name="Elements_in_template" Relationship="Self.FK_Elements_in_template_Template_elements" FromRole="Template_elements" ToRole="Elements_in_template" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>

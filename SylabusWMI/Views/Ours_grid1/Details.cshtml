@@ -1,0 +1,42 @@
+﻿@model SylabusWMI.Models.Ours_grid
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ours_grid</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Recruitment_year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recruitment_year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty1.Name_PL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty1.Name_PL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_programme1.Study_mode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_programme1.Study_mode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_grid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

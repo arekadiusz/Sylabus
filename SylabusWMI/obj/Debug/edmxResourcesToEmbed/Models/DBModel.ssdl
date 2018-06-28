@@ -24,7 +24,7 @@
     <Key>
       <PropertyRef Name="Id_faculty" />
     </Key>
-    <Property Name="Id_faculty" Type="int" Nullable="false" />
+    <Property Name="Id_faculty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name_PL" Type="varchar" MaxLength="50" />
     <Property Name="Name_ENG" Type="varchar" MaxLength="50" />
   </EntityType>
@@ -81,7 +81,7 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Template_code" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Year" Type="datetime" Nullable="false" />
     <Property Name="Template_name" Type="varchar" MaxLength="80" Nullable="false" />
     <Property Name="Faculty" Type="int" />
   </EntityType>
@@ -93,6 +93,7 @@
     <Property Name="Elements_name" Type="varchar" MaxLength="100" />
     <Property Name="Tempalate" Type="varchar" MaxLength="50" />
     <Property Name="Obligatory" Type="bit" />
+    <Property Name="Type" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="Users">
     <Key>

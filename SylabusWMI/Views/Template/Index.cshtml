@@ -1,17 +1,56 @@
-﻿
+﻿@model IEnumerable<SylabusWMI.Models.Template>
+
 @{
     ViewBag.Title = "Index";
 }
 
+<h2>Index</h2>
+
 <div class="container" style="padding-left:0">
     <ul class="nav navbar-nav">
+
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("Panel administracyjny", "Admin", "Home")</li>
+        <li>@Html.ActionLink("Panel administracyjny", "Index", "Admin")</li>
         <li>@Html.ActionLink("Panel wykładowcy", "Index", "Instructor")</li>
         <li>@Html.ActionLink("Panel template", "Index", "Template")</li>
     </ul>
 </div>
-<h2>Panel obsługi Template</h2>
-<div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Template_name)
+        </th>
+        <th></th>
+    </tr>
 
-</div>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Template_name)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Template_code }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Template_code }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Template_code })
+            </td>
+        </tr>
+    }
+
+</table>

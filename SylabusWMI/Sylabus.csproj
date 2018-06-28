@@ -169,14 +169,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Elements_in_templateController.cs" />
     <Compile Include="Controllers\Elements_valueController.cs" />
     <Compile Include="Controllers\FacultiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
+    <Compile Include="Controllers\Ours_grid1Controller.cs" />
     <Compile Include="Controllers\Ours_gridController.cs" />
     <Compile Include="Controllers\Ours_grid_elementsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\Study_programme1Controller.cs" />
     <Compile Include="Controllers\Study_programmeController.cs" />
     <Compile Include="Controllers\SylabusController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
@@ -1067,12 +1070,26 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Instructor\Index.cshtml" />
-    <Content Include="Views\Template\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\Siatkigodzin.cshtml" />
+    <Content Include="Views\Template\Create.cshtml" />
+    <Content Include="Views\Template\Delete.cshtml" />
+    <Content Include="Views\Template\Details.cshtml" />
+    <Content Include="Views\Template\Edit.cshtml" />
+    <Content Include="Views\Template\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Ours_grid1\Create.cshtml" />
+    <Content Include="Views\Ours_grid1\Delete.cshtml" />
+    <Content Include="Views\Ours_grid1\Details.cshtml" />
+    <Content Include="Views\Ours_grid1\Edit.cshtml" />
+    <Content Include="Views\Ours_grid1\Index.cshtml" />
+    <Content Include="Views\Study_programme1\Create.cshtml" />
+    <Content Include="Views\Study_programme1\Delete.cshtml" />
+    <Content Include="Views\Study_programme1\Details.cshtml" />
+    <Content Include="Views\Study_programme1\Edit.cshtml" />
+    <Content Include="Views\Study_programme1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

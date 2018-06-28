@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Mvc;
 using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
@@ -131,4 +132,5 @@ namespace SylabusWMI.Controllers
             return db.Faculties.Count(e => e.Id_faculty == id) > 0;
         }
     }
+
 }

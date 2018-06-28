@@ -11,112 +11,116 @@ using SylabusWMI.Models;
 
 namespace SylabusWMI.Controllers
 {
-    public class TemplateController : Controller
+    public class Ours_grid1Controller : Controller
     {
         private sylabusWMIEntities db = new sylabusWMIEntities();
 
-        // GET: Template
+        // GET: Ours_grid1
         public async Task<ActionResult> Index()
         {
-            var templates = db.Templates.Include(t => t.Faculty1);
-            return View(await templates.ToListAsync());
+            var ours_grid = db.Ours_grid.Include(o => o.Faculty1).Include(o => o.Study_programme1);
+            return View(await ours_grid.ToListAsync());
         }
 
-        // GET: Template/Details/5
+        // GET: Ours_grid1/Details/5
         public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Template template = await db.Templates.FindAsync(id);
-            if (template == null)
+            Ours_grid ours_grid = await db.Ours_grid.FindAsync(id);
+            if (ours_grid == null)
             {
                 return HttpNotFound();
             }
-            return View(template);
+            return View(ours_grid);
         }
 
-        // GET: Template/Create
+        // GET: Ours_grid1/Create
         public ActionResult Create()
         {
             ViewBag.Faculty = new SelectList(db.Faculties, "Id_faculty", "Name_PL");
+            ViewBag.Study_programme = new SelectList(db.Study_programme, "Id_study_program", "Study_mode");
             return View();
         }
 
-        // POST: Template/Create
+        // POST: Ours_grid1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Template_code,Year,Template_name,Faculty")] Template template)
+        public async Task<ActionResult> Create([Bind(Include = "Id_grid,Study_programme,Recruitment_year,Faculty")] Ours_grid ours_grid)
         {
             if (ModelState.IsValid)
             {
-                db.Templates.Add(template);
+                db.Ours_grid.Add(ours_grid);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Faculty = new SelectList(db.Faculties, "Id_faculty", "Name_PL", template.Faculty);
-            return View(template);
+            ViewBag.Faculty = new SelectList(db.Faculties, "Id_faculty", "Name_PL", ours_grid.Faculty);
+            ViewBag.Study_programme = new SelectList(db.Study_programme, "Id_study_program", "Study_mode", ours_grid.Study_programme);
+            return View(ours_grid);
         }
 
-        // GET: Template/Edit/5
+        // GET: Ours_grid1/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Template template = await db.Templates.FindAsync(id);
-            if (template == null)
+            Ours_grid ours_grid = await db.Ours_grid.FindAsync(id);
+            if (ours_grid == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Faculty = new SelectList(db.Faculties, "Id_faculty", "Name_PL", template.Faculty);
-            return View(template);
+            ViewBag.Faculty = new SelectList(db.Faculties, "Id_faculty", "Name_PL", ours_grid.Faculty);
+            ViewBag.Study_programme = new SelectList(db.Study_programme, "Id_study_program", "Study_mode", ours_grid.Study_programme);
+            return View(ours_grid);
         }
 
-        // POST: Template/Edit/5
+        // POST: Ours_grid1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Template_code,Year,Template_name,Faculty")] Template template)
+        public async Task<ActionResult> Edit([Bind(Include = "Id_grid,Study_programme,Recruitment_year,Faculty")] Ours_grid ours_grid)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(template).State = EntityState.Modified;
+                db.Entry(ours_grid).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.Faculty = new SelectList(db.Faculties, "Id_faculty", "Name_PL", template.Faculty);
-            return View(template);
+            ViewBag.Faculty = new SelectList(db.Faculties, "Id_faculty", "Name_PL", ours_grid.Faculty);
+            ViewBag.Study_programme = new SelectList(db.Study_programme, "Id_study_program", "Study_mode", ours_grid.Study_programme);
+            return View(ours_grid);
         }
 
-        // GET: Template/Delete/5
+        // GET: Ours_grid1/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Template template = await db.Templates.FindAsync(id);
-            if (template == null)
+            Ours_grid ours_grid = await db.Ours_grid.FindAsync(id);
+            if (ours_grid == null)
             {
                 return HttpNotFound();
             }
-            return View(template);
+            return View(ours_grid);
         }
 
-        // POST: Template/Delete/5
+        // POST: Ours_grid1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Template template = await db.Templates.FindAsync(id);
-            db.Templates.Remove(template);
+            Ours_grid ours_grid = await db.Ours_grid.FindAsync(id);
+            db.Ours_grid.Remove(ours_grid);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

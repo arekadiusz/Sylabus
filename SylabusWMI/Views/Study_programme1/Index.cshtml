@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SylabusWMI.Models.Study_programme>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Study_mode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Study_degree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_PL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_ENG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Faculty1.Name_PL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Study_mode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Study_degree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_PL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_ENG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty1.Name_PL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_study_program }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_study_program }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_study_program })
+        </td>
+    </tr>
+}
+
+</table>

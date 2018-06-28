@@ -98,6 +98,7 @@
     <EntitySetMapping Name="Template_elements">
       <EntityTypeMapping TypeName="sylabusWMIModel.Template_elements">
         <MappingFragment StoreEntitySet="Template_elements">
+          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Elements_name" ColumnName="Elements_name" />
           <ScalarProperty Name="Tempalate" ColumnName="Tempalate" />
