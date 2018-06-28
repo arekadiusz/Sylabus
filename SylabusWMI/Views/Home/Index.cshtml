@@ -49,26 +49,68 @@
     </div>
 </div>
 
-   <div ng-app class="container">
-       <div class="row">
-           <div class="col-se-8 center-block">
-               <h1>Dostępne przedmioty</h1>
-               <div class="table-responsive">
-                   <table class="table table-hover">
+
+http://localhost:55926/api/Roles
+
+
+<script>
+</script>
+<div ng-app class="container">
+    <div class="row">
+        <div class="col-se-8 center-block">
+            <h1>Dostępne przedmioty</h1>
+            <div class="table-responsive">
+                <table class="table table-hover">
                     <thead>
                         <tr>
-                        <th>Nazwa</th>
+                            <th ng-repeat="naglowek in [
+                                'Nazwa'
+                                ]">
+                                {{naglowek}}
+                            </th>
                         </tr>
-                    </thead> 
+                    </thead>
                     <tbody>
-                        <tr>
-                            <td>Przedmioty</td>
+
+                        <tr ng-repeat='sylabus in [data]'>
+                            <td>{{data.Roles_name}}</td>
                         </tr>
                     </tbody>
-                    </table>
-               </div>
-           </div>
-      </div>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-  
+<table id="subjecttable">
+    <thead>
+        <tr>
+            <th>Id roli</th>
+            <th>Nazwa</th>
+            <th>Opis</th>
+        </tr>
+    </thead>
+</table>
+
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/>
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#subjecttable").DataTable(
+                {
+                    "ajax": {
+                        "url": "/api/Roles",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "Id_roles" },
+                        { "data": "Roles_name" },
+                        { "data": "Roles_description" }
+                    ]
+                });
+        });
+    </script>
+ }
+
 

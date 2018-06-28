@@ -18,7 +18,7 @@ namespace SylabusWMI.Controllers
         // GET: Template
         public async Task<ActionResult> Index()
         {
-            var templates = db.Templates.Include(t => t.Faculty1);
+            var templates = db.Templates.Include(t => t.Faculty);
             return View(await templates.ToListAsync());
         }
 

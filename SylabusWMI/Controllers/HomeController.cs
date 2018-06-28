@@ -28,6 +28,14 @@ namespace Sylabus.Controllers
             return View();
 
         }
+        public ActionResult GetList()
+        {
+            using (sylabusWMIEntities db = new sylabusWMIEntities())
+            {
+                var empList = db.Roles.ToList();
+                return Json(new { data=empList}, JsonRequestBehavior.AllowGet);
+            }
+        }
 
     }
 }
