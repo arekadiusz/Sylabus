@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sylabusWMIModelStoreContainer" CdmEntityContainer="sylabusWMIEntities">
+    <EntitySetMapping Name="Basic_subject_data">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Basic_subject_data">
+        <MappingFragment StoreEntitySet="Basic_subject_data">
+          <ScalarProperty Name="Subject_code" ColumnName="Subject_code" />
+          <ScalarProperty Name="Lecture_hours" ColumnName="Lecture_hours" />
+          <ScalarProperty Name="Exercise_hours" ColumnName="Exercise_hours" />
+          <ScalarProperty Name="Laboratories_hours" ColumnName="Laboratories_hours" />
+          <ScalarProperty Name="Own_work" ColumnName="Own_work" />
+          <ScalarProperty Name="Ects" ColumnName="Ects" />
+          <ScalarProperty Name="Exam" ColumnName="Exam" />
+          <ScalarProperty Name="Name_PL" ColumnName="Name_PL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Elements_in_template">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Elements_in_template">
+        <MappingFragment StoreEntitySet="Elements_in_template">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Template" ColumnName="Template" />
+          <ScalarProperty Name="Element" ColumnName="Element" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Elements_value">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Elements_value">
+        <MappingFragment StoreEntitySet="Elements_value">
+          <ScalarProperty Name="Id_value" ColumnName="Id_value" />
+          <ScalarProperty Name="Value_PL" ColumnName="Value_PL" />
+          <ScalarProperty Name="Elements_template" ColumnName="Elements_template" />
+          <ScalarProperty Name="Sylabus" ColumnName="Sylabus" />
+          <ScalarProperty Name="Template" ColumnName="Template" />
+          <ScalarProperty Name="Value_EN" ColumnName="Value_EN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculty">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="Id_faculty" ColumnName="Id_faculty" />
+          <ScalarProperty Name="Name_ENG" ColumnName="Name_ENG" />
+          <ScalarProperty Name="Name_PL" ColumnName="Name_PL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ours_grid">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Ours_grid">
+        <MappingFragment StoreEntitySet="Ours_grid">
+          <ScalarProperty Name="Id_grid" ColumnName="Id_grid" />
+          <ScalarProperty Name="Study_programme" ColumnName="Study_programme" />
+          <ScalarProperty Name="Recruitment_year" ColumnName="Recruitment_year" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ours_grid_elements">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Ours_grid_elements">
+        <MappingFragment StoreEntitySet="Ours_grid_elements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Sylabus" ColumnName="Sylabus" />
+          <ScalarProperty Name="Ours_grid" ColumnName="Ours_grid" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id_roles" ColumnName="Id_roles" />
+          <ScalarProperty Name="Roles_name" ColumnName="Roles_name" />
+          <ScalarProperty Name="Roles_description" ColumnName="Roles_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Study_programme">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Study_programme">
+        <MappingFragment StoreEntitySet="Study_programme">
+          <ScalarProperty Name="Id_study_program" ColumnName="Id_study_program" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+          <ScalarProperty Name="Study_mode" ColumnName="Study_mode" />
+          <ScalarProperty Name="Study_degree" ColumnName="Study_degree" />
+          <ScalarProperty Name="Name_PL" ColumnName="Name_PL" />
+          <ScalarProperty Name="Name_ENG" ColumnName="Name_ENG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sylabus">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Sylabus">
+        <MappingFragment StoreEntitySet="Sylabus">
+          <ScalarProperty Name="Id_sylabus" ColumnName="Id_sylabus" />
+          <ScalarProperty Name="Subject_code" ColumnName="Subject_code" />
+          <ScalarProperty Name="Template" ColumnName="Template" />
+          <ScalarProperty Name="Ours_grid" ColumnName="Ours_grid" />
+          <ScalarProperty Name="Lecturer" ColumnName="Lecturer" />
+          <ScalarProperty Name="Basic_data" ColumnName="Basic_data" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="sylabusWMIModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Template">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Template">
+        <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Template_code" ColumnName="Template_code" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Template_name" ColumnName="Template_name" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Template_elements">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Template_elements">
+        <MappingFragment StoreEntitySet="Template_elements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Elements_name" ColumnName="Elements_name" />
+          <ScalarProperty Name="Tempalate" ColumnName="Tempalate" />
+          <ScalarProperty Name="Obligatory" ColumnName="Obligatory" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="sylabusWMIModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id_user" ColumnName="Id_user" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

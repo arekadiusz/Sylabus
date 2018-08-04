@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cdb6cc5886ef41f7ba6e02d45a45ecc0" Name="Diagram1">
+        <EntityTypeShape EntityType="sylabusWMIModel.Basic_subject_data" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Elements_in_template" Width="1.5" PointX="7.5" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Elements_value" Width="1.5" PointX="9.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Faculty" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Ours_grid" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Ours_grid_elements" Width="1.5" PointX="7.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Roles" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Study_programme" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Sylabus" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Template" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Template_elements" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sylabusWMIModel.Users" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="sylabusWMIModel.PK_Sylabus_Basic_subject_data" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Elements_in_template_Template" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Elements_in_template_Template_elements" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Elements_value_Elements_in_template" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Elements_value_Sylabus" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Elements_value_Template" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Ours_grid_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Study_programme_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Sylabus_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Template_Faculty1" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Users_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Elementy_siatki_Siatka_godzin" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Ours_grid_Study_programme" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Ours_grid_elements_Sylabus" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Uzytkownicy_Role1" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Sylabus_Template" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Sylabus_Uzytkownicy" ManuallyRouted="false" />
+        <AssociationConnector Association="sylabusWMIModel.FK_Template_elements_Template" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

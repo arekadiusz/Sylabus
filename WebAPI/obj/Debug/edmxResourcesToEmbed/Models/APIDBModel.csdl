@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sylabusWMIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Basic_subject_data">
+    <Key>
+      <PropertyRef Name="Subject_code" />
+    </Key>
+    <Property Name="Subject_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lecture_hours" Type="Int32" Nullable="false" />
+    <Property Name="Exercise_hours" Type="Int32" Nullable="false" />
+    <Property Name="Laboratories_hours" Type="Int32" Nullable="false" />
+    <Property Name="Own_work" Type="Int32" Nullable="false" />
+    <Property Name="Ects" Type="Int32" Nullable="false" />
+    <Property Name="Exam" Type="Boolean" Nullable="false" />
+    <Property Name="Name_PL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Sylabus" Relationship="Self.PK_Sylabus_Basic_subject_data" FromRole="Basic_subject_data" ToRole="Sylabus" />
+  </EntityType>
+  <EntityType Name="Elements_in_template">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Template" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Element" Type="Int32" />
+    <Property Name="Order" Type="Int32" />
+    <NavigationProperty Name="Template1" Relationship="Self.FK_Elements_in_template_Template" FromRole="Elements_in_template" ToRole="Template" />
+    <NavigationProperty Name="Template_elements" Relationship="Self.FK_Elements_in_template_Template_elements" FromRole="Elements_in_template" ToRole="Template_elements" />
+    <NavigationProperty Name="Elements_value" Relationship="Self.FK_Elements_value_Elements_in_template" FromRole="Elements_in_template" ToRole="Elements_value" />
+  </EntityType>
+  <EntityType Name="Elements_value">
+    <Key>
+      <PropertyRef Name="Id_value" />
+    </Key>
+    <Property Name="Id_value" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value_PL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Elements_template" Type="Int32" />
+    <Property Name="Sylabus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Template" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Value_EN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Elements_in_template" Relationship="Self.FK_Elements_value_Elements_in_template" FromRole="Elements_value" ToRole="Elements_in_template" />
+    <NavigationProperty Name="Sylabus1" Relationship="Self.FK_Elements_value_Sylabus" FromRole="Elements_value" ToRole="Sylabus" />
+    <NavigationProperty Name="Template1" Relationship="Self.FK_Elements_value_Template" FromRole="Elements_value" ToRole="Template" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="Id_faculty" />
+    </Key>
+    <Property Name="Id_faculty" Type="Int32" Nullable="false" />
+    <Property Name="Name_ENG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name_PL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ours_grid" Relationship="Self.FK_Ours_grid_Faculty" FromRole="Faculty" ToRole="Ours_grid" />
+    <NavigationProperty Name="Study_programme" Relationship="Self.FK_Study_programme_Faculty" FromRole="Faculty" ToRole="Study_programme" />
+    <NavigationProperty Name="Sylabus" Relationship="Self.FK_Sylabus_Faculty" FromRole="Faculty" ToRole="Sylabus" />
+    <NavigationProperty Name="Template" Relationship="Self.FK_Template_Faculty1" FromRole="Faculty" ToRole="Template" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Faculty" FromRole="Faculty" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Ours_grid">
+    <Key>
+      <PropertyRef Name="Id_grid" />
+    </Key>
+    <Property Name="Id_grid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Study_programme" Type="Int32" />
+    <Property Name="Recruitment_year" Type="Int32" />
+    <Property Name="Faculty" Type="Int32" />
+    <NavigationProperty Name="Faculty1" Relationship="Self.FK_Ours_grid_Faculty" FromRole="Ours_grid" ToRole="Faculty" />
+    <NavigationProperty Name="Ours_grid_elements" Relationship="Self.FK_Elementy_siatki_Siatka_godzin" FromRole="Ours_grid" ToRole="Ours_grid_elements" />
+    <NavigationProperty Name="Study_programme1" Relationship="Self.FK_Ours_grid_Study_programme" FromRole="Ours_grid" ToRole="Study_programme" />
+  </EntityType>
+  <EntityType Name="Ours_grid_elements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sylabus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Ours_grid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Semester" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Ours_grid1" Relationship="Self.FK_Elementy_siatki_Siatka_godzin" FromRole="Ours_grid_elements" ToRole="Ours_grid" />
+    <NavigationProperty Name="Sylabus1" Relationship="Self.FK_Ours_grid_elements_Sylabus" FromRole="Ours_grid_elements" ToRole="Sylabus" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Roles_name" />
+    </Key>
+    <Property Name="Id_roles" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Roles_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Roles_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Uzytkownicy_Role1" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Study_programme">
+    <Key>
+      <PropertyRef Name="Id_study_program" />
+    </Key>
+    <Property Name="Id_study_program" Type="Int32" Nullable="false" />
+    <Property Name="Faculty" Type="Int32" />
+    <Property Name="Study_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Study_degree" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Name_PL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name_ENG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Faculty1" Relationship="Self.FK_Study_programme_Faculty" FromRole="Study_programme" ToRole="Faculty" />
+    <NavigationProperty Name="Ours_grid" Relationship="Self.FK_Ours_grid_Study_programme" FromRole="Study_programme" ToRole="Ours_grid" />
+  </EntityType>
+  <EntityType Name="Sylabus">
+    <Key>
+      <PropertyRef Name="Subject_code" />
+    </Key>
+    <Property Name="Id_sylabus" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Template" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ours_grid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lecturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Basic_data" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Faculty" Type="Int32" />
+    <NavigationProperty Name="Basic_subject_data" Relationship="Self.PK_Sylabus_Basic_subject_data" FromRole="Sylabus" ToRole="Basic_subject_data" />
+    <NavigationProperty Name="Elements_value" Relationship="Self.FK_Elements_value_Sylabus" FromRole="Sylabus" ToRole="Elements_value" />
+    <NavigationProperty Name="Faculty1" Relationship="Self.FK_Sylabus_Faculty" FromRole="Sylabus" ToRole="Faculty" />
+    <NavigationProperty Name="Ours_grid_elements" Relationship="Self.FK_Ours_grid_elements_Sylabus" FromRole="Sylabus" ToRole="Ours_grid_elements" />
+    <NavigationProperty Name="Template1" Relationship="Self.FK_Sylabus_Template" FromRole="Sylabus" ToRole="Template" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Sylabus_Uzytkownicy" FromRole="Sylabus" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Template">
+    <Key>
+      <PropertyRef Name="Template_code" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Template_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Year" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Template_name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Faculty" Type="Int32" />
+    <NavigationProperty Name="Elements_in_template" Relationship="Self.FK_Elements_in_template_Template" FromRole="Template" ToRole="Elements_in_template" />
+    <NavigationProperty Name="Elements_value" Relationship="Self.FK_Elements_value_Template" FromRole="Template" ToRole="Elements_value" />
+    <NavigationProperty Name="Faculty1" Relationship="Self.FK_Template_Faculty1" FromRole="Template" ToRole="Faculty" />
+    <NavigationProperty Name="Sylabus" Relationship="Self.FK_Sylabus_Template" FromRole="Template" ToRole="Sylabus" />
+    <NavigationProperty Name="Template_elements" Relationship="Self.FK_Template_elements_Template" FromRole="Template" ToRole="Template_elements" />
+  </EntityType>
+  <EntityType Name="Template_elements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Elements_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Tempalate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Obligatory" Type="Boolean" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Elements_in_template" Relationship="Self.FK_Elements_in_template_Template_elements" FromRole="Template_elements" ToRole="Elements_in_template" />
+    <NavigationProperty Name="Template" Relationship="Self.FK_Template_elements_Template" FromRole="Template_elements" ToRole="Template" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="E_mail" />
+    </Key>
+    <Property Name="Id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Roles" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Faculty" Type="Int32" />
+    <NavigationProperty Name="Faculty1" Relationship="Self.FK_Users_Faculty" FromRole="Users" ToRole="Faculty" />
+    <NavigationProperty Name="Roles1" Relationship="Self.FK_Uzytkownicy_Role1" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Sylabus" Relationship="Self.FK_Sylabus_Uzytkownicy" FromRole="Users" ToRole="Sylabus" />
+  </EntityType>
+  <Association Name="PK_Sylabus_Basic_subject_data">
+    <End Role="Basic_subject_data" Type="Self.Basic_subject_data" Multiplicity="1" />
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Basic_subject_data">
+        <PropertyRef Name="Subject_code" />
+      </Principal>
+      <Dependent Role="Sylabus">
+        <PropertyRef Name="Subject_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elements_in_template_Template">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Elements_in_template" Type="Self.Elements_in_template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="Template_code" />
+      </Principal>
+      <Dependent Role="Elements_in_template">
+        <PropertyRef Name="Template" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elements_in_template_Template_elements">
+    <End Role="Template_elements" Type="Self.Template_elements" Multiplicity="0..1" />
+    <End Role="Elements_in_template" Type="Self.Elements_in_template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template_elements">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Elements_in_template">
+        <PropertyRef Name="Element" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elements_value_Elements_in_template">
+    <End Role="Elements_in_template" Type="Self.Elements_in_template" Multiplicity="0..1" />
+    <End Role="Elements_value" Type="Self.Elements_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Elements_in_template">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Elements_value">
+        <PropertyRef Name="Elements_template" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elements_value_Sylabus">
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="0..1" />
+    <End Role="Elements_value" Type="Self.Elements_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sylabus">
+        <PropertyRef Name="Subject_code" />
+      </Principal>
+      <Dependent Role="Elements_value">
+        <PropertyRef Name="Sylabus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elements_value_Template">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Elements_value" Type="Self.Elements_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="Template_code" />
+      </Principal>
+      <Dependent Role="Elements_value">
+        <PropertyRef Name="Template" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ours_grid_Faculty">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Ours_grid" Type="Self.Ours_grid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="Id_faculty" />
+      </Principal>
+      <Dependent Role="Ours_grid">
+        <PropertyRef Name="Faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Study_programme_Faculty">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Study_programme" Type="Self.Study_programme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="Id_faculty" />
+      </Principal>
+      <Dependent Role="Study_programme">
+        <PropertyRef Name="Faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sylabus_Faculty">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="Id_faculty" />
+      </Principal>
+      <Dependent Role="Sylabus">
+        <PropertyRef Name="Faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Template_Faculty1">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Template" Type="Self.Template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="Id_faculty" />
+      </Principal>
+      <Dependent Role="Template">
+        <PropertyRef Name="Faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Faculty">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="Id_faculty" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Elementy_siatki_Siatka_godzin">
+    <End Role="Ours_grid" Type="Self.Ours_grid" Multiplicity="0..1" />
+    <End Role="Ours_grid_elements" Type="Self.Ours_grid_elements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ours_grid">
+        <PropertyRef Name="Id_grid" />
+      </Principal>
+      <Dependent Role="Ours_grid_elements">
+        <PropertyRef Name="Ours_grid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ours_grid_Study_programme">
+    <End Role="Study_programme" Type="Self.Study_programme" Multiplicity="0..1" />
+    <End Role="Ours_grid" Type="Self.Ours_grid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Study_programme">
+        <PropertyRef Name="Id_study_program" />
+      </Principal>
+      <Dependent Role="Ours_grid">
+        <PropertyRef Name="Study_programme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ours_grid_elements_Sylabus">
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="0..1" />
+    <End Role="Ours_grid_elements" Type="Self.Ours_grid_elements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sylabus">
+        <PropertyRef Name="Subject_code" />
+      </Principal>
+      <Dependent Role="Ours_grid_elements">
+        <PropertyRef Name="Sylabus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uzytkownicy_Role1">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Roles_name" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Roles" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sylabus_Template">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="Template_code" />
+      </Principal>
+      <Dependent Role="Sylabus">
+        <PropertyRef Name="Template" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sylabus_Uzytkownicy">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Sylabus" Type="Self.Sylabus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="E_mail" />
+      </Principal>
+      <Dependent Role="Sylabus">
+        <PropertyRef Name="Lecturer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Template_elements_Template">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Template_elements" Type="Self.Template_elements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="Template_code" />
+      </Principal>
+      <Dependent Role="Template_elements">
+        <PropertyRef Name="Tempalate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sylabusWMIEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Basic_subject_data" EntityType="Self.Basic_subject_data" />
+    <EntitySet Name="Elements_in_template" EntityType="Self.Elements_in_template" />
+    <EntitySet Name="Elements_value" EntityType="Self.Elements_value" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" />
+    <EntitySet Name="Ours_grid" EntityType="Self.Ours_grid" />
+    <EntitySet Name="Ours_grid_elements" EntityType="Self.Ours_grid_elements" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Study_programme" EntityType="Self.Study_programme" />
+    <EntitySet Name="Sylabus" EntityType="Self.Sylabus" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Template" EntityType="Self.Template" />
+    <EntitySet Name="Template_elements" EntityType="Self.Template_elements" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="PK_Sylabus_Basic_subject_data" Association="Self.PK_Sylabus_Basic_subject_data">
+      <End Role="Basic_subject_data" EntitySet="Basic_subject_data" />
+      <End Role="Sylabus" EntitySet="Sylabus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elements_in_template_Template" Association="Self.FK_Elements_in_template_Template">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Elements_in_template" EntitySet="Elements_in_template" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elements_in_template_Template_elements" Association="Self.FK_Elements_in_template_Template_elements">
+      <End Role="Template_elements" EntitySet="Template_elements" />
+      <End Role="Elements_in_template" EntitySet="Elements_in_template" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elements_value_Elements_in_template" Association="Self.FK_Elements_value_Elements_in_template">
+      <End Role="Elements_in_template" EntitySet="Elements_in_template" />
+      <End Role="Elements_value" EntitySet="Elements_value" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elements_value_Sylabus" Association="Self.FK_Elements_value_Sylabus">
+      <End Role="Sylabus" EntitySet="Sylabus" />
+      <End Role="Elements_value" EntitySet="Elements_value" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elements_value_Template" Association="Self.FK_Elements_value_Template">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Elements_value" EntitySet="Elements_value" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ours_grid_Faculty" Association="Self.FK_Ours_grid_Faculty">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Ours_grid" EntitySet="Ours_grid" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Study_programme_Faculty" Association="Self.FK_Study_programme_Faculty">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Study_programme" EntitySet="Study_programme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sylabus_Faculty" Association="Self.FK_Sylabus_Faculty">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Sylabus" EntitySet="Sylabus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Template_Faculty1" Association="Self.FK_Template_Faculty1">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Template" EntitySet="Template" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Faculty" Association="Self.FK_Users_Faculty">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Elementy_siatki_Siatka_godzin" Association="Self.FK_Elementy_siatki_Siatka_godzin">
+      <End Role="Ours_grid" EntitySet="Ours_grid" />
+      <End Role="Ours_grid_elements" EntitySet="Ours_grid_elements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ours_grid_Study_programme" Association="Self.FK_Ours_grid_Study_programme">
+      <End Role="Study_programme" EntitySet="Study_programme" />
+      <End Role="Ours_grid" EntitySet="Ours_grid" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ours_grid_elements_Sylabus" Association="Self.FK_Ours_grid_elements_Sylabus">
+      <End Role="Sylabus" EntitySet="Sylabus" />
+      <End Role="Ours_grid_elements" EntitySet="Ours_grid_elements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uzytkownicy_Role1" Association="Self.FK_Uzytkownicy_Role1">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sylabus_Template" Association="Self.FK_Sylabus_Template">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Sylabus" EntitySet="Sylabus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sylabus_Uzytkownicy" Association="Self.FK_Sylabus_Uzytkownicy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Sylabus" EntitySet="Sylabus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Template_elements_Template" Association="Self.FK_Template_elements_Template">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Template_elements" EntitySet="Template_elements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
